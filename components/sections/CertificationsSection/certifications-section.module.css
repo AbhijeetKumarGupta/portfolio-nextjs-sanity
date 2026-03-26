@@ -1,0 +1,81 @@
+.wrap {
+  background: var(--bg-deep);
+  border-block: 1px solid var(--border-subtle);
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  padding: 1.25rem;
+  align-items: start;
+  height: 100%;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border-subtle));
+}
+
+.institute {
+  display: flex;
+  align-items: center;
+}
+
+.institute img {
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  background: #fff;
+  padding: 0.35rem;
+}
+
+.details {
+  min-width: 0;
+}
+
+.certLink {
+  display: block;
+}
+
+.certName {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+
+.certLink:hover .certName {
+  color: var(--accent);
+}
+
+.skillLine {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.skillLine span {
+  color: var(--text-secondary);
+  font-weight: 500;
+}

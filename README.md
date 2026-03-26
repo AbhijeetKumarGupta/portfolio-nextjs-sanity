@@ -1,75 +1,186 @@
-# Live Site Link                                                                                                                                                        
-https://abhijeetkumargupta.netlify.app/
+# Portfolio Website (Next.js + Sanity)
 
-https://my-portfolio-react-redux-sanity.vercel.app/
+A full-stack portfolio application built using Next.js and Sanity CMS. The project is designed for performance, scalability, and maintainability, with a focus on dynamic content management and modern frontend architecture.
 
-# Getting Started with Create React App
+---
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Tech Stack
 
-## Available Scripts
+- Frontend: Next.js (App Router)
+- CMS: Sanity Studio
+- Styling: CSS Modules / Styled Components
+- Data Fetching: GROQ with next-sanity
+- Runtime: React 19
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Server-side rendering and static generation using Next.js
+- Headless CMS integration for dynamic content management
+- Modular and reusable component architecture
+- Real-time content updates via Sanity
+- Embedded Sanity Studio within the application
+- Query debugging support using Vision tool
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Project Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+.
+├── app/                     # Next.js App Router
+│   ├── studio/              # Embedded Sanity Studio route
+│   └── ...
+├── sanity/                  # Sanity Studio configuration
+│   ├── schemaTypes/         # Schema definitions
+│   └── sanity.config.ts
+├── lib/                     # Sanity client and queries
+├── components/              # UI components
+├── public/                  # Static assets
+├── styles/                  # Global styles
+└── package.json
+```
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Clone the repository
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+git clone <repository-url>
+cd portfolio-nextjs-sanity
+```
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 2. Install dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 3. Environment Variables
 
-## Learn More
+Create a `.env.local` file in the root directory:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+### 4. Run development server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+npm run dev
+```
 
-### Analyzing the Bundle Size
+Application will be available at:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+http://localhost:3000
+```
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Sanity Studio
 
-### Advanced Configuration
+The Sanity Studio is embedded inside the Next.js app.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Access it at:
 
-### Deployment
+```
+http://localhost:3000/studio
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## Example GROQ Query
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+*[_type == "project"]{
+  title,
+  description,
+  "imageUrl": mainImage.asset->url
+}
+```
+
+---
+
+## Build and Production
+
+### Build the application
+
+```
+npm run build
+```
+
+### Start production server
+
+```
+npm run start
+```
+
+---
+
+## Deployment
+
+### Frontend
+
+- Deploy using Vercel or any Node.js hosting platform
+- Ensure environment variables are configured
+
+### Sanity Studio (optional standalone deployment)
+
+```
+cd sanity
+npm run build
+npm run deploy
+```
+
+---
+
+## Troubleshooting
+
+### Dependency issues
+
+```
+rm -rf node_modules package-lock.json .next
+npm install
+```
+
+### Studio not loading
+
+- Verify `/studio` route configuration
+- Check `sanity.config.ts`
+- Ensure compatible versions of Next.js, React, and Sanity
+
+### Version compatibility
+
+This project uses:
+
+- Next.js 16
+- React 19
+- Sanity 5
+
+All dependencies must remain aligned to avoid runtime errors.
+
+---
+
+## Future Enhancements
+
+- Authentication and role-based access for CMS
+- Blog and article support
+- Analytics integration
+- Performance optimization and caching strategies
+
+---
+
+## License
+
+MIT License
