@@ -59,6 +59,8 @@ export async function fetchPortfolioData(): Promise<PortfolioData> {
           projectDescription?: string;
           institution?: string;
           link?: string;
+          repositoryLink?: string;
+          repositoryLinkBackend?: string;
           logo?: unknown;
         }>
       >(groq`*[_type == "project"]`),
@@ -145,6 +147,8 @@ export async function fetchPortfolioData(): Promise<PortfolioData> {
         projectDescription: i.projectDescription ?? "",
         institution: i.institution ?? "",
         link: i.link ?? "",
+        repositoryLink: i.repositoryLink ?? "",
+        repositoryLinkBackend: i.repositoryLinkBackend ?? "",
         logoUrl: urlForImage(i.logo),
       })),
   };

@@ -20,6 +20,13 @@ export function ProjectsSection({ projects }: Props) {
   const skipInitialScroll = useRef(true);
 
   const current = projects[selected];
+
+  const showActionBar = !!(
+    current.link ||
+    current.repositoryLink ||
+    current.repositoryLink
+  );
+
   const lines = useMemo(
     () => (current ? splitDescription(current.projectDescription) : []),
     [current],
@@ -159,24 +166,49 @@ export function ProjectsSection({ projects }: Props) {
                       <p className="muted">No description provided.</p>
                     )}
                   </div>
-                  {current.link ? (
+                  {showActionBar ? (
                     <div className={styles.detailFooter}>
                       <div className={styles.actions}>
-                        <button
-                          type="button"
-                          className={styles.btn}
-                          onClick={() => setPreviewOpen(true)}
-                        >
-                          Open preview
-                        </button>
-                        <a
-                          href={current.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          className={styles.linkOut}
-                        >
-                          Open in new tab
-                        </a>
+                        {current.link ? (
+                          <>
+                            <button
+                              type="button"
+                              className={styles.btn}
+                              onClick={() => setPreviewOpen(true)}
+                            >
+                              Open preview
+                            </button>
+                            <a
+                              href={current.link}
+                              target="_blank"
+                              rel="noreferrer"
+                              className={styles.linkOut}
+                            >
+                              Open in new tab
+                            </a>
+                          </>
+                        ) : null}
+                        {current.repositoryLink ? (
+                          <a
+                            href={current.repositoryLink}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={styles.linkOut}
+                          >
+                            {current.repositoryLinkBackend ? "FE " : ""}
+                            Repository
+                          </a>
+                        ) : null}
+                        {current.repositoryLinkBackend ? (
+                          <a
+                            href={current.repositoryLinkBackend}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={styles.linkOut}
+                          >
+                            BE Repository
+                          </a>
+                        ) : null}
                       </div>
                     </div>
                   ) : null}

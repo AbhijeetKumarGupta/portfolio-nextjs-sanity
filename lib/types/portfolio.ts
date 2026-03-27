@@ -45,6 +45,8 @@ export type ProjectItem = {
   projectDescription: string;
   institution: string;
   link: string;
+  repositoryLink: string;
+  repositoryLinkBackend: string;
   logoUrl: string;
 };
 
