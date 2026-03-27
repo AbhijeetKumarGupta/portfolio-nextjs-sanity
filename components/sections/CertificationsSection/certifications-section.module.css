@@ -25,8 +25,9 @@
   grid-template-columns: auto 1fr;
   gap: 1rem;
   padding: 1.25rem;
-  align-items: start;
+  align-items: center;
   height: 100%;
+  min-height: 7.25rem;
   transition: border-color 0.2s ease;
 }
 

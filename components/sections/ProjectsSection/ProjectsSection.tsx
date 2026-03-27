@@ -47,6 +47,13 @@ export function ProjectsSection({ projects }: Props) {
       inline: "nearest",
       behavior: prefersReducedMotion() ? "auto" : "smooth",
     });
+
+    const previewEl = document.querySelector<HTMLElement>("#preview-section");
+    previewEl?.scrollIntoView({
+      block: "nearest",
+      inline: "nearest",
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
+    });
   }, [selected]);
 
   if (!projects.length) {
@@ -122,7 +129,7 @@ export function ProjectsSection({ projects }: Props) {
             ) : null}
           </div>
 
-          <div className={styles.panelShell}>
+          <div id="preview-section" className={styles.panelShell}>
             {previewOpen && current?.link ? (
               <div className={styles.previewView}>
                 <div className={styles.viewHeader}>
