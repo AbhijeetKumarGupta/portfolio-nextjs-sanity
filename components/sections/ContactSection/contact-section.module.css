@@ -10,10 +10,10 @@
 .bg {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
   opacity: 0.3;
   filter: saturate(0.8);
+  object-fit: cover;
+  object-position: 50% 30%;
 }
 
 .overlay {
@@ -59,7 +59,7 @@
   padding: clamp(1.35rem, 2.4vw, 1.85rem) clamp(1.35rem, 2.6vw, 1.9rem);
   display: flex;
   gap: 1.1rem;
-  align-items: flex-start;
+  align-items: center;
   min-height: clamp(6.5rem, 14vh, 9rem);
   border-radius: var(--radius-lg);
   background: color-mix(in srgb, var(--bg-surface) 88%, transparent);

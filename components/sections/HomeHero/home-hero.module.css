@@ -14,8 +14,8 @@
   position: absolute;
   inset: 0;
   z-index: -2;
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
+  object-position: 50% 30%;
 }
 
 .overlay {
